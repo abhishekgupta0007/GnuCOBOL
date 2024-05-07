@@ -1,0 +1,28 @@
+# Step 1: Extract GNU Cobol Package
+tar -xvzf gnucobol_package.tar.gz
+cd gnucobol_package/gnucobol-3.2
+
+# Step 2: Install Required Dependencies
+sudo apt update
+sudo apt install build-essential
+sudo apt-get install libdb-dev  # For database support
+sudo apt-get install libgmp-dev  # For GMP library support
+sudo apt install mpich  # For MPI support
+
+# Step 3: Configure Library Paths
+sudo vi /etc/ld.so.conf.d/x86_64-linux-gnu.conf
+# Add the following line:
+# /root/gnucobol_package
+# Save and exit, then run:
+sudo ldconfig
+
+# Step 4: Build and Install GNU Cobol
+./configure
+make
+sudo make install
+
+
+
+
+
+
